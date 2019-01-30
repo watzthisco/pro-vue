@@ -1,3 +1,9 @@
+# MacOS X
+.DS_Store
+
+# WebStorm
+.idea
+
 # Logs
 logs
 *.log
