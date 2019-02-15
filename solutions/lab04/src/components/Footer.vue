@@ -1,5 +1,12 @@
 <template>
-<h1>Footer</h1>
+  <footer>
+    <div class="container">
+	conduit
+      <span class="attribution">
+		Code &amp; design licensed under MIT.
+      </span>
+    </div>
+  </footer>
 </template>
 
 
