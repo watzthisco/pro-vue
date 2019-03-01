@@ -47,29 +47,24 @@ export default {
 }
 </script>
 <style scoped>
-.banner{
+.banner {
   background:#5cb85c;
-  }
-.banner p{
-  color:#fff;
-  text-align:center;
-  font-size:1.5rem;
-  font-weight:300;
-  }
-.banner h1{
-  font-weight:700;
-  text-align:center;
-  font-size:3.5rem;
-  }
-.feed-toggle{
-  margin-bottom:-1px
-  }
-.sidebar{
-  padding:5px 10px 10px;
-  background:#f3f3f3;
-  border-radius:4px
-  }
-.sidebar p{
-  margin-bottom:.2rem
-  }
+}
+.banner p {
+  color: #fff;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.banner h1 {
+  font-weight: 700;
+  text-align: center;
+  font-size: 3.5rem;
+}
+.sidebar {
+  padding: 5px 10px 10px;
+  background: #f3f3f3;
+  border-radius: 4px;
+}
+
 </style>

@@ -22,15 +22,5 @@ export default {
 </script>
 
 <style>
-h1{
-  text-shadow:0 1px 3px rgba(0,0,0,.3);
-  margin-bottom:0;
-  }
-.logo-font {
-  vertical-align:middle;
-  }
-.feed-toggle{
-  margin-bottom:-1px;
-  }
 
 </style>
