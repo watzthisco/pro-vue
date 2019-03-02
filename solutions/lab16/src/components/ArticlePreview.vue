@@ -10,7 +10,7 @@
         }"
       >
         <i class="ion-heart"></i>
-        <span class="counter"> {{ article.favoritesCount }} </span>
+        <span class="counter"> {{ this.favoritesCount }} </span>
       </button>
       <button v-on:click="$emit('enlarge-text')">
         Enlarge Text
