@@ -10,6 +10,7 @@
         }"
       >
         <i class="ion-heart"></i>
+        <span class="counter"> {{ this.favoritesCount }} </span>
       </button>
       <p v-text="article.description" />
       <span><a :href="articleLink.slug">Read more...</a></span>
@@ -21,7 +22,8 @@ export default {
     name: 'ArticlePreview',
     data: function(){
       return {
-        favorited: false
+        favorited: false,
+        favoritesCount: 0
       }
     },
     props: {
@@ -37,6 +39,7 @@ export default {
     methods: {
       toggleFavorite() {
         this.favorited = !this.favorited;
+        this.favoritesCount++;
         console.log("favorited = " + this.favorited);
 
       }

@@ -1,13 +1,17 @@
 <template>
   <div>
-
+      <input
+         class="form-control"
+         v-model.number="searchDetails"
+         placeholder="filter articles"
+         >
       <div v-if="articles.length === 0" class="article-preview">
         No articles are here... yet.
       </div>
       <ArticlePreview
         :style="{ fontSize: articleFontSize + 'em' }"
         v-on:enlarge-text="articleFontSize += 0.1"
-        v-for="(article, index) in articles"
+        v-for="(article, index) in filterIt"
         :article="article"
         :key="article.title + index"
       />
@@ -26,7 +30,8 @@ export default {
   data(){
         return{
             articles: {},
-            articleFontSize: 1
+            articleFontSize: 1,
+            searchDetails: ''
         }
   },
   async mounted() {
@@ -34,7 +39,15 @@ export default {
     this.articles = results.data.articles;
     console.log(this.articles);
   },
-
+  computed: {
+    filterIt: function(){
+      var self = this;
+      return this.articles.filter(function(a){
+        return a.title.indexOf(self.searchDetails) > - 1
+      }
+      )
+    },
+  },
   methods: {
     fetchArticles() {
       console.log("fetching articles");

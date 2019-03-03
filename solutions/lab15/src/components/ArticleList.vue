@@ -5,8 +5,8 @@
         No articles are here... yet.
       </div>
       <ArticlePreview
-        v-on:enlarge-text="articleFontSize += 0.1" 
         :style="{ fontSize: articleFontSize + 'em' }"
+        v-on:enlarge-text="articleFontSize += 0.1"
         v-for="(article, index) in articles"
         :article="article"
         :key="article.title + index"
@@ -25,8 +25,8 @@ export default {
   },
   data(){
         return{
-			    articleFontSize:1,
-          articles: articles
+            articles: articles,
+            articleFontSize: 1
         }
     }
 }
