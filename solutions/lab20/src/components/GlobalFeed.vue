@@ -7,7 +7,6 @@ import ArticleList from './ArticleList.vue';
 
 export default {
 	name: 'GlobalFeed',
-	
 	components: {
 		ArticleList
 	}
