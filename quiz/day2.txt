@@ -1,0 +1,55 @@
+1. What is webpack and what does it do?
+
+
+2. What is the purpose of a 'loader' in webpack?
+
+
+3. What is the pupose of a 'plugin' in webpack?
+
+
+4. What does Babel do?
+
+
+5. Why is Babel necessary?
+
+
+6. What is an attribute starting with v- ?
+
+
+7. Where do you use directives?
+
+
+8. What's the purpose of data: in a Vue instance?
+
+
+9. Where do you write functions that modify reactive data in Vue?
+
+
+10. What is a computed property?
+
+
+11. How do you pass data from a parent component to a child?
+
+
+12. What do you call data passed from a parent to a child?
+
+
+13. What directive is used for "conditional rendering"?
+
+
+14. What directive loops over an array?
+
+
+15. What directive loops over the properties of an object?
+
+
+16. What do filters do?
+
+
+17. What directive registers an event listener? 
+
+v-on:click=""
+@click=""
+
+v-bind:value=""
+:value=""

@@ -1,0 +1,44 @@
+Monday Review
+
+1. What does "reactive" mean in the context of Javascript frameworks?
+
+2. What are the 3 sections of a Vue single-file component?
+
+3. Where is Node.js used (select all that apply)?
+a. Server
+b. Client
+c. Development
+
+3. Where is vue-cli used (select all that apply)??
+a. Server
+b. Client
+c. Development
+
+4. Where is eslint used (select all that apply)?
+a. Server
+b. Client
+c. Development
+
+5. What is npm?
+a. The node package manager
+b. The node production matrix
+c. The nifty process manager
+
+6. Which of these is the correct syntax for creating a Vue instance?
+a.
+
+let app = Vue({
+...
+});
+
+b. 
+
+let app = new Vue({
+...
+});
+
+c. 
+
+let app = Vue.instance({
+...
+});

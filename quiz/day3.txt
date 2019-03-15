@@ -1,0 +1,10 @@
+1. What's the order of events in a component's lifecycle?
+
+2. What lifecycle method is most often used for loading data?
+
+3. At what lifecycle method does the component appear in the browser?
+
+4. How many root elements can a component have?
+
+5. What do slots do?
+<MyTag>dkfsdfksdfsd</MyTag> 
