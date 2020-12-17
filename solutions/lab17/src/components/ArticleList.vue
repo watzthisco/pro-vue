@@ -29,7 +29,7 @@ export default {
   },
   data(){
         return{
-            articles: {},
+            articles: [],
             articleFontSize: 1,
             searchDetails: ''
         }
