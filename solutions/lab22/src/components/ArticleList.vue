@@ -1,71 +1,39 @@
+<script setup>
+import { onMounted, ref } from 'vue';
+import { storeToRefs } from 'pinia';
+
+import ArticlePreview from './ArticlePreview.vue';
+import { useArticleFilter } from '../composables/useArticleFilter';
+import { useHomeStore } from '../stores/home';
+
+const homeStore = useHomeStore();
+// State and getters need storeToRefs to stay reactive when destructured;
+// actions can be pulled off the store directly.
+const { articles, isLoading } = storeToRefs(homeStore);
+
+const articleFontSize = ref(1);
+const { searchDetails, filterIt } = useArticleFilter(articles);
+
+onMounted(() => {
+  homeStore.fetchArticles({ type: 'all' });
+});
+</script>
+
 <template>
   <div>
     <div v-if="isLoading" class="article-preview">Loading articles...</div>
     <div v-else>
-      <input
-         class="form-control"
-         v-model.number="searchDetails"
-         placeholder="filter articles"
-         >
+      <input v-model="searchDetails" class="form-control" placeholder="filter articles" />
       <div v-if="articles.length === 0" class="article-preview">
         No articles are here... yet.
       </div>
       <ArticlePreview
-        :style="{ fontSize: articleFontSize + 'em' }"
-        v-on:enlarge-text="articleFontSize += 0.1"
         v-for="(article, index) in filterIt"
-        :article="article"
         :key="article.title + index"
+        :style="{ fontSize: articleFontSize + 'em' }"
+        :article="article"
+        @enlarge-text="articleFontSize += 0.1"
       />
     </div>
-    </div>
+  </div>
 </template>
-
-<script>
-import ArticlePreview from './ArticlePreview.vue';
-import ApiService from "../common/api.service";
-import { mapGetters } from "vuex";
-import { FETCH_ARTICLES } from "../store/actions.type";
-
-
-export default {
-    name: 'ArticleList',
-    components: {
-    ArticlePreview
-  },
-  data(){
-    return{
-      articleFontSize: 1,
-      searchDetails: ''
-    }
-  },
-  mounted() {
-    this.fetchArticles();
-  },
-
-  computed: {
-    filterIt: function(){
-      var self = this;
-      return this.articles.filter(function(a){
-        return a.title.indexOf(self.searchDetails) > - 1
-      }
-      )
-    },
-    listConfig() {
-      const { type } = this;
-    
-      return {
-        type,
-      };
-    },
-    ...mapGetters(["articlesCount", "isLoading", "articles"])
-  },
-
-
-  methods: {
-    fetchArticles() {
-      this.$store.dispatch(FETCH_ARTICLES,this.listConfig);
-    },
-  }
-}
-</script>

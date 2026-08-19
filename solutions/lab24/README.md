@@ -1,29 +1,37 @@
-# conduit
+# conduit — lab24
+
+A Vue 3 + Vite project.
 
 ## Project setup
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compile and hot-reload for development
+
 ```
-npm run serve
+npm run dev
 ```
 
-### Compiles and minifies for production
+### Compile and minify for production
+
 ```
 npm run build
 ```
 
-### Run your tests
+### Run the unit tests
+
 ```
 npm run test
 ```
 
-### Lints and fixes files
+### Lint and fix files
+
 ```
 npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+See the [Vite configuration reference](https://vite.dev/config/).

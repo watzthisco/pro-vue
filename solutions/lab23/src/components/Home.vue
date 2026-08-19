@@ -1,3 +1,13 @@
+<script setup>
+import { storeToRefs } from 'pinia';
+
+import GlobalFeed from './GlobalFeed.vue';
+import { useAuthStore } from '@/stores/auth';
+
+// storeToRefs keeps state and getters reactive when destructured.
+const { isAuthenticated } = storeToRefs(useAuthStore());
+</script>
+
 <template>
   <div class="home-page">
     <div class="banner">
@@ -11,24 +21,20 @@
         <div class="col-md-9">
           <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
-              <li class="nav-item">Global Feed</li>   
+              <li class="nav-item">Global Feed</li>
             </ul>
           </div>
-        <GlobalFeed />
+          <GlobalFeed />
         </div>
         <div class="col-md-3">
           <div class="sidebar">
             <p v-if="isAuthenticated">Welcome, authenticated user</p>
             <p>Popular Tags</p>
             <div class="tag-list">
-                <ul class="tag-list">
-                    <li class="tag-default tag-pill tag-outline">
-dragons
-   </li>
-                    <li class="tag-default tag-pill tag-outline">
-sushi
-   </li>
-                </ul>
+              <ul class="tag-list">
+                <li class="tag-default tag-pill tag-outline">dragons</li>
+                <li class="tag-default tag-pill tag-outline">sushi</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -37,24 +43,9 @@ sushi
   </div>
 </template>
 
-
-<script>
-import GlobalFeed from './GlobalFeed.vue';
-import { mapGetters } from "vuex";
-
-export default {
-    name: 'Home',
-    computed: {
-    ...mapGetters(["isAuthenticated"]),
-    },
-    components: {
-      GlobalFeed
-    }
-}
-</script>
 <style scoped>
 .banner {
-  background:#5cb85c;
+  background: #5cb85c;
 }
 .banner p {
   color: #fff;
@@ -72,5 +63,4 @@ export default {
   background: #f3f3f3;
   border-radius: 4px;
 }
-
 </style>

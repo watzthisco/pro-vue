@@ -1,22 +1,16 @@
+<script setup>
+import { RouterView } from 'vue-router';
+
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue';
+</script>
+
 <template>
   <div id="app">
     <Header />
-    <router-view></router-view>
+    <RouterView />
     <Footer />
   </div>
 </template>
-
-<script>
-import Header from './components/Header';
-import Footer from './components/Footer';
-
-export default {
-  name: 'app',
-  components: {
-    Header,
-    Footer
-  }
-}
-</script>
 
 <style></style>

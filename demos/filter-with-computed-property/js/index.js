@@ -1,57 +1,49 @@
 const PEOPLE = [
-  {name:'Ping', age: 20},
-  {name:'Amir', age: 24},
-  {name:'Shabnum', age: 30 },
-  {name: 'Mark', age: 40}
-]
+  { name: 'Ping', age: 20 },
+  { name: 'Amir', age: 24 },
+  { name: 'Shabnum', age: 30 },
+  { name: 'Mark', age: 40 },
+];
 
-new Vue({
-  el:"#app",
-  data: {
-    searchDetails: '',
-    reverse: false,
-    people: PEOPLE
-  },
-  methods: {
-    getKey: function(key){
-     this.reverse = ! this.reverse
-     if(key==='name' && this.reverse){
-       this.people = _.orderBy(this.people, ['name'], ['asc'])
-     }else if(key==='name' && !this.reverse){
-       this.people = _.orderBy(this.people, ['name'], ['desc'])
-     }else if(key==='age' && this.reverse){
-       this.people = _.orderBy(this.people, ['age'], ['asc'])
-     }else{
-       this.people = _.orderBy(this.people, ['age'], ['desc'])
-     }
-    }
+const { createApp } = Vue;
+
+createApp({
+  data() {
+    return {
+      searchDetails: '',
+      sortKey: 'name',
+      reverse: false,
+      people: PEOPLE,
+    };
   },
   computed: {
-    
-    
-    filterIt: function(){
-      
-       if(_.isString(this.searchDetails)){
-        return this.filterPeopleByName;
-       }else{
-         return this.filterPeopleByAge;
-       }
+    // A computed property is cached: it only re-runs when one of the
+    // reactive values it reads actually changes.
+    filterIt() {
+      const term = this.searchDetails.trim().toLowerCase();
+
+      const matches = this.people.filter(
+        (person) =>
+          person.name.toLowerCase().includes(term) ||
+          String(person.age).includes(term),
+      );
+
+      const direction = this.reverse ? -1 : 1;
+
+      return [...matches].sort((a, b) => {
+        const left = a[this.sortKey];
+        const right = b[this.sortKey];
+
+        if (left === right) return 0;
+        return (left < right ? -1 : 1) * direction;
+      });
     },
-    
-    filterPeopleByName: function(){
-      var self = this
-          return this.people.filter(function(p){
-            return p.name.indexOf(self.searchDetails) > - 1
-          })  
-      
-     },
-    filterPeopleByAge: function(){
-      var self = this
-          return this.people.filter(function(p){
-            var age = p.age.toString()
-            return age.indexOf(self.searchDetails) > - 1
-          })  
-    }
-    
-  }
-})
+  },
+  methods: {
+    sortBy(key) {
+      // Clicking the same column again reverses the sort.
+      this.reverse = this.sortKey === key ? !this.reverse : false;
+      this.sortKey = key;
+    },
+  },
+}).mount('#app');

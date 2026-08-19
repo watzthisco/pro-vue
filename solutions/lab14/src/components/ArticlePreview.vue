@@ -1,48 +1,37 @@
-<template>
-  <div class="article-preview">
-      <h1 v-text="article.title" />
-      <button
-        class="btn btn-sm float-right"
-        v-on:click="toggleFavorite"
-        :class="{
-          'btn-primary': favorited,
-          'btn-outline-primary': !favorited
-        }"
-      >
-        <i class="ion-heart"></i>
-        <span class="counter"> {{ this.favoritesCount }} </span>
-      </button>
-      <p v-text="article.description" />
-      <span><a :href="articleLink.slug">Read more...</a></span>
-  </div>
-</template>
+<script setup>
+import { computed, ref } from 'vue';
 
-<script>
-export default {
-    name: 'ArticlePreview',
-    data: function(){
-      return {
-        favorited: false,
-        favoritesCount: 0
-      }
-    },
-    props: {
-      article: { type: Object, required: true }
-    },
-    computed: {
-      articleLink() {
-        return {
-          slug: this.article.slug
-        }
-      }
-    },
-    methods: {
-      toggleFavorite() {
-        this.favorited = !this.favorited;
-        this.favoritesCount++;
-        console.log("favorited = " + this.favorited);
+const props = defineProps({
+  article: { type: Object, required: true },
+});
 
-      }
-    }
+// ref() replaces the Options API `data()` function.
+const favorited = ref(false);
+const favoritesCount = ref(0);
+
+const articleLink = computed(() => ({ slug: props.article.slug }));
+
+function toggleFavorite() {
+  favorited.value = !favorited.value;
+  favoritesCount.value += 1;
 }
 </script>
+
+<template>
+  <div class="article-preview">
+    <h1 v-text="article.title" />
+    <button
+      class="btn btn-sm float-end"
+      :class="{
+        'btn-primary': favorited,
+        'btn-outline-primary': !favorited,
+      }"
+      @click="toggleFavorite"
+    >
+      <i class="ion-heart"></i>
+      <span class="counter"> {{ favoritesCount }} </span>
+    </button>
+    <p v-text="article.description" />
+    <span><a :href="articleLink.slug">Read more...</a></span>
+  </div>
+</template>

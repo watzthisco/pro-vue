@@ -1,2 +1,4 @@
-# Learning Node
-A basic knowledge of Node.js is important for modern web development.
+# Lab 09 — Automate Linting
+
+Configure ESLint with a flat config (`eslint.config.js`) and wire it into an
+npm script.

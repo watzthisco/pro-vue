@@ -1,14 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
-import ApiService from "./common/api.service";
-import store from "./store";
-import router from "./router";
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+
+import App from './App.vue';
+import ApiService from './common/api.service';
+import router from './router';
 
 ApiService.init();
-Vue.config.productionTip = false
 
-new Vue({
-  store,
-  router,
-  render: h => h(App),
-}).$mount('#app')
+const app = createApp(App);
+
+// Pinia must be installed before the router so that navigation guards and
+// route components can reach the stores.
+app.use(createPinia());
+app.use(router);
+app.mount('#app');

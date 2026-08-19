@@ -1,19 +1,15 @@
+const { createApp } = Vue;
 
-new Vue({
-  el:"#app",
-  data: {
-    firstName: 'Joe',
-    lastName: 'Talcum'
-  },
-  methods: {
-    
+createApp({
+  data() {
+    return {
+      firstName: 'Joe',
+      lastName: 'Talcum',
+    };
   },
   computed: {
-    computeFullName: function(){
-      return this.firstName + ' ' + this.lastName;
-    }
-    
-    
-    
-  }
-})
+    computeFullName() {
+      return `${this.firstName} ${this.lastName}`;
+    },
+  },
+}).mount('#app');

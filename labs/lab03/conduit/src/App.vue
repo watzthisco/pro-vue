@@ -1,20 +1,13 @@
+<script setup>
+import HelloWorld from './components/HelloWorld.vue';
+</script>
+
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Vue.js is fun!"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <HelloWorld msg="Vue.js is fun!" />
   </div>
 </template>
-
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
 <style>
 #app {

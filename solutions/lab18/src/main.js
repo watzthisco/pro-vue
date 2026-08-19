@@ -1,11 +1,9 @@
-import Vue from 'vue'
-import App from './App.vue'
-import ApiService from "./common/api.service";
-import './assets/app.css'
+import { createApp } from 'vue';
+
+import App from './App.vue';
+import ApiService from './common/api.service';
+import './assets/app.css';
 
 ApiService.init();
-Vue.config.productionTip = false
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+createApp(App).mount('#app');

@@ -1,3 +1,7 @@
+<script setup>
+import GlobalFeed from './GlobalFeed.vue';
+</script>
+
 <template>
   <div class="home-page">
     <div class="banner">
@@ -11,23 +15,19 @@
         <div class="col-md-9">
           <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
-              <li class="nav-item">Global Feed</li>   
+              <li class="nav-item">Global Feed</li>
             </ul>
           </div>
-        <GlobalFeed />
+          <GlobalFeed />
         </div>
         <div class="col-md-3">
           <div class="sidebar">
             <p>Popular Tags</p>
             <div class="tag-list">
-                <ul class="tag-list">
-                    <li class="tag-default tag-pill tag-outline">
-dragons
-   </li>
-                    <li class="tag-default tag-pill tag-outline">
-sushi
-   </li>
-                </ul>
+              <ul class="tag-list">
+                <li class="tag-default tag-pill tag-outline">dragons</li>
+                <li class="tag-default tag-pill tag-outline">sushi</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -35,14 +35,3 @@ sushi
     </div>
   </div>
 </template>
-
-
-<script>
-import GlobalFeed from './GlobalFeed.vue';
-export default {
-    name: 'Home',
-    components: {
-      GlobalFeed
-    }
-}
-</script>

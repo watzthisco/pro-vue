@@ -1,3 +1,7 @@
+<script setup>
+// Static home page.
+</script>
+
 <template>
   <div class="home-page">
     <div class="banner">
@@ -11,23 +15,19 @@
         <div class="col-md-9">
           <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
-              <li class="nav-item">Global Feed</li>   
+              <li class="nav-item">Global Feed</li>
             </ul>
           </div>
-        <p>Home Content Placeholder</p>
+          <p>Home Content Placeholder</p>
         </div>
         <div class="col-md-3">
           <div class="sidebar">
             <p>Popular Tags</p>
             <div class="tag-list">
-                <ul class="tag-list">
-                    <li class="tag-default tag-pill tag-outline">
-dragons
-   </li>
-                    <li class="tag-default tag-pill tag-outline">
-sushi
-   </li>
-                </ul>
+              <ul class="tag-list">
+                <li class="tag-default tag-pill tag-outline">dragons</li>
+                <li class="tag-default tag-pill tag-outline">sushi</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -35,10 +35,3 @@ sushi
     </div>
   </div>
 </template>
-
-
-<script>
-export default {
-    name: 'Home'
-}
-</script>

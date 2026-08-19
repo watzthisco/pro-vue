@@ -1,55 +1,20 @@
 {
   "name": "pro-vue",
-  "version": "0.1.0",
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+  "version": "2.0.0",
+  "private": true,
+  "description": "Labs, solutions and demos for the Professional Vue.js course.",
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/watzthisco/pro-vue.git"
   },
-  "author": "",
+  "author": "Chris Minnick",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/watzthisco/pro-vue/issues"
   },
-  "homepage": "https://github.com/watzthisco/pro-vue#readme",
-  "dependencies": {
-    "vue": "^2.5.21"
-  },
-  "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.3.0",
-    "@vue/cli-plugin-eslint": "^3.3.0",
-    "@vue/cli-service": "^3.3.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "homepage": "https://github.com/watzthisco/pro-vue#readme"
 }
