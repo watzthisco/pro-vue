@@ -20,5 +20,7 @@ yarn-error.log*
 *.sln
 *.sw*
 
-# migration scratch
+
+# one-shot migration workspace (the tooling lives in tools/v2-migration)
 /.migration
+__pycache__/
