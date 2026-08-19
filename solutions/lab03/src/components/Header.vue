@@ -1,6 +1,11 @@
+<script setup>
+// Lab 03: a purely presentational component. With <script setup> every
+// top-level binding is exposed to the template automatically.
+</script>
+
 <template>
-<nav class="navbar">
-   <div class="container">
+  <nav class="navbar">
+    <div class="container">
       <a href="/" class="navbar-brand">Conduit</a>
       <ul class="nav navbar-nav flex-row">
         <li class="nav-item p-2">
@@ -14,11 +19,5 @@
         </li>
       </ul>
     </div>
-</nav>
+  </nav>
 </template>
-
-<script>
-export default {
-  name: 'Header'
-}
-</script>

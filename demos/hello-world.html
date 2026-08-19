@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    </head>
-    <body>
-        <div id="app"></div>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello Vue</title>
+    <script src="https://unpkg.com/vue@3.5.41/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app"></div>
 
-        <script>
-            var hello = new Vue({
-                el: '#app',
-                template: '<div>{{message}}</div>',
-                data: {
-                    message: 'Hello Vue!'
-                }
-            })
-        </script>
-    </body>
+    <script>
+      // Vue 3 replaces `new Vue({ el })` with createApp().mount().
+      const { createApp } = Vue;
+
+      createApp({
+        template: '<div>{{ message }}</div>',
+        data() {
+          return { message: 'Hello Vue!' };
+        },
+      }).mount('#app');
+    </script>
+  </body>
 </html>

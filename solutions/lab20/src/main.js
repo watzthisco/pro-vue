@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
-import ApiService from "./common/api.service";
-import store from "./store";
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
+
+import App from './App.vue';
+import ApiService from './common/api.service';
 
 ApiService.init();
-Vue.config.productionTip = false
 
-new Vue({
-  store,
-  render: h => h(App),
-}).$mount('#app')
+const app = createApp(App);
+
+app.use(createPinia());
+app.mount('#app');
