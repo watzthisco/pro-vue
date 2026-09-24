@@ -1,0 +1,86 @@
+Review 1: Vue Quickstart and Modern Tooling (Labs 01-10) - ANSWER KEY
+
+1. What does "reactive" mean in the context of JavaScript frameworks?
+The view updates automatically when the application's state changes. Vue
+tracks which state each component reads, so when a value changes it knows
+exactly which components need to re-render.
+
+2. What are the 3 sections of a Vue single-file component?
+<script setup> (the logic), <template> (the markup), and <style scoped>
+(CSS that applies to this component only).
+
+3. Where is Node.js used?
+a. Server and c. Development. Node.js runs servers (Lab 08) and all of the
+development tooling (npm, Vite, ESLint, Vitest). It does not run in the
+browser.
+
+4. Where is Vite used?
+c. Development. Vite runs the dev server and produces the production build.
+The files it writes to dist/ are what run on the client; Vite itself does not.
+
+5. Where is ESLint used?
+c. Development.
+
+6. What is npm?
+a. The node package manager.
+
+7. Which command scaffolds a new Vue project?
+b. npm create vue@latest. Vue CLI (a, c) reached end of life at the end of
+2023, and vue init (d) is from Vue CLI 2.
+
+8. Which is the correct syntax for creating and mounting a Vue 3 app?
+b. createApp(App).mount('#app'). Option a is the Vue 2 syntax; there is no
+global Vue object to call "new" on in Vue 3.
+
+9. Which versions does "^3.5.2" allow?
+c. 3.5.2 and any later 3.x release (>=3.5.2 <4.0.0). The caret allows minor
+and patch updates. A tilde (~3.5.2) would allow only patch updates (b).
+
+10. Difference between dependencies and devDependencies? Which flag?
+dependencies are needed by the app when it runs (vue, pinia, vue-router).
+devDependencies are needed only to develop, build and test it (vite,
+eslint, vitest). Use --save-dev (or -D) to save to devDependencies. No flag
+saves to dependencies.
+
+11. When would you run npm ci instead of npm install?
+In continuous integration or whenever you need a clean, reproducible
+install. npm ci installs exactly what package-lock.json specifies, removes
+any existing node_modules first, and fails if the lockfile and package.json
+disagree.
+
+12. Since ESLint 9, what is the default configuration file?
+c. eslint.config.js (the "flat config"). The .eslintrc.* formats were
+removed in ESLint 10.
+
+13. Difference between a linter and a formatter?
+A linter (ESLint) analyses code for likely bugs and rule violations, which is
+about correctness. A formatter (Prettier) rewrites layout: whitespace,
+quotes, line length. It does not care whether the code is correct.
+
+14. What does Vite do during development and on npm run build?
+Development: it serves your source files to the browser as native ES modules
+without bundling them. It transforms each file only when the browser
+requests it, pre-bundles dependencies once and caches them, and uses hot
+module replacement to apply edits without losing component state.
+Build: it bundles, tree-shakes, code-splits and minifies the app into dist/.
+Vite 8 (used in the labs) does this with Rolldown; Vite 7 and earlier used
+Rollup.
+
+15. What is a transpiler, and why is one necessary?
+A transpiler converts source code into equivalent code in another form, such
+as modern JavaScript into syntax that older browsers accept. It's needed
+because browsers support different language features. Vite does this for you
+at build time; you rarely configure a transpiler directly.
+
+16. What is the virtual DOM?
+A lightweight JavaScript representation of the DOM. Vue renders templates to
+virtual nodes, compares the new tree with the previous one, and applies only
+the differences to the real DOM. Because Vue tracks each component's
+dependencies, it also skips re-rendering components whose state hasn't
+changed.
+
+17. What can the Vue DevTools do that the browser's tools can't?
+Show the component tree (not just DOM elements), and inspect and edit each
+component's props and state live. It also shows Pinia stores and the current
+route, and keeps a timeline of events and store actions with time-travel
+debugging.

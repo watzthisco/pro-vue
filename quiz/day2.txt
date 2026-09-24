@@ -1,55 +1,73 @@
-1. What is webpack and what does it do?
+Review 2: Vue Fundamentals (Labs 11-17)
+
+1. What's the difference between the Options API and the Composition API?
+Which one does this course use?
 
 
-2. What is the purpose of a 'loader' in webpack?
+2. In a component that uses <script setup>, how do you make a variable or
+function available to the template?
 
 
-3. What is the pupose of a 'plugin' in webpack?
+3. What's the difference between ref() and reactive()? When do you need
+to write .value?
 
 
-4. What does Babel do?
+4. What do you call an attribute that starts with v- ?
 
 
-5. Why is Babel necessary?
+5. In <form v-on:submit.prevent="save">, which part is the directive, which
+part is the argument, and which part is the modifier?
 
 
-6. What is an attribute starting with v- ?
+6. What directive is used for "conditional rendering"? How is v-show
+different?
 
 
-7. Where do you use directives?
+7. What directive loops over an array or the properties of an object?
 
 
-8. What's the purpose of data: in a Vue instance?
+8. Why should you always give v-for a key, and what makes a good key?
 
 
-9. Where do you write functions that modify reactive data in Vue?
-
-
-10. What is a computed property?
-
-
-11. How do you pass data from a parent component to a child?
-
-
-12. What do you call data passed from a parent to a child?
-
-
-13. What directive is used for "conditional rendering"?
-
-
-14. What directive loops over an array?
-
-
-15. What directive loops over the properties of an object?
-
-
-16. What do filters do?
-
-
-17. What directive registers an event listener? 
-
-v-on:click=""
-@click=""
+9. Write the shorthand for each of these:
 
 v-bind:value=""
-:value=""
+
+v-on:click=""
+
+v-slot:header
+
+
+10. How do you output a string that contains HTML markup, rather than
+displaying it as plain text?
+
+
+11. How do you add a CSS class to an element only when a condition is true?
+
+
+12. What is a computed property? How is it different from calling a function
+in the template?
+
+
+13. Vue 2 filters were removed in Vue 3. What do you use instead?
+
+
+14. What's the difference between watch() and watchEffect()? When would you
+use a watcher instead of a computed property?
+
+
+15. How does a child component tell its parent that something happened?
+
+
+16. v-model on an <input> is shorthand for which two things?
+
+
+17. Put these lifecycle hooks in the order they run:
+onUnmounted, onMounted, onBeforeMount, onUpdated, onBeforeUnmount, onBeforeUpdate
+
+
+18. Vue 3 has no onCreated hook. Where does that code go instead?
+
+
+19. In which lifecycle hook do you get access to the rendered DOM? In which
+hook should you clear a timer that the component started?

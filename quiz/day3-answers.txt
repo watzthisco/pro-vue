@@ -1,0 +1,103 @@
+Review 3: Components, State, Routing and Testing (Labs 18-24) - ANSWER KEY
+
+1. How do you pass data from parent to child? What's it called? Can the
+child change it?
+The parent passes it as attributes on the child's tag
+(<TodoItem :todo="item" />), and the child declares them with defineProps.
+They're called props. Props are read-only in the child; to change one, the
+child emits an event and the parent updates its own state.
+
+2. How many root elements can a Vue 3 component have?
+Any number. Vue 3 supports fragments; Vue 2 required a single root. With
+more than one root, bind $attrs explicitly if the parent passes attributes
+such as class or style.
+
+3. What do slots do?
+They let a parent pass template content into a child component. The child
+renders it wherever it places <slot></slot>. Slot content can include HTML
+and other components, uses the parent's scope, and can fall back to default
+content written inside the <slot> tag.
+
+4. How do you send content into a slot named "header"?
+The child declares <slot name="header"></slot>. The parent writes
+<template v-slot:header>...</template>, or the shorthand
+<template #header>...</template>.
+
+5. Local vs. global registration? Which is preferred, and why?
+Local: import the component in the <script setup> of the component that uses
+it (the import is the registration). Global: register it on the app with
+app.component('PopupWindow', PopupWindow) so any component can use it.
+Prefer local: readers can see where each component comes from, unused
+components are tree-shaken out, and the editor can jump to the definition.
+Register globally only for components used almost everywhere.
+
+6. What does defineModel() do?
+It supports v-model on a custom component (Vue 3.4+). It returns a writable
+ref: reading it gives the parent's modelValue prop, and writing to it emits
+update:modelValue for you, so you don't declare the prop and event by hand.
+
+7. What is a composable? Why did composables replace mixins?
+A function that uses the Composition API (ref, computed, watch, lifecycle
+hooks) to encapsulate and reuse stateful logic. Mixins merged options into
+the component silently: you couldn't tell where a property came from, two
+mixins with the same name collided, and mixins couldn't take arguments. A
+composable takes inputs as parameters and returns its outputs, so both are
+visible where it's called, and each call gets its own independent state.
+
+8. What naming convention do composables follow?
+They start with "use", such as useArticleFilter, and by convention live in
+src/composables.
+
+9. What problem does a store like Pinia solve?
+Sharing state between components that aren't directly related. Without a
+store you either pass the state through every intermediate component (prop
+drilling) or keep separate copies that drift out of sync. A store gives that
+state one owner, outside the component tree.
+
+10. Three parts of a Pinia store? What doesn't Pinia have?
+state, getters and actions. Pinia has no mutations (and so no commit or
+dispatch); actions change state directly.
+
+11. Why can't you destructure state out of a store? What do you use instead?
+A store is reactive, so destructuring copies the current values out and they
+stop updating. Use storeToRefs(store) to get state and getters as refs.
+Actions are plain functions and can be destructured directly.
+
+12. Where do you put code that fetches data from a server?
+In an action. Actions can be async; they await the request and assign the
+result to the store's state.
+
+13. What do <RouterLink> and <RouterView> do?
+<RouterLink :to="..."> renders a link that changes the route without a full
+page reload. <RouterView /> marks where the component that matches the
+current route is rendered.
+
+14. Why load route components with () => import(...)?
+Lazy loading. Each route becomes its own chunk that's downloaded only when
+the user first navigates to it, which keeps the initial bundle small and the
+first page load fast.
+
+15. What are the three steps of the TDD cycle?
+Red: write a small test that fails. Green: make it pass as quickly as
+possible. Refactor: clean up and remove the duplication created by making it
+pass. Then repeat.
+
+16. In Vitest, what do describe, it and expect do?
+describe creates a test suite that groups related specs. it (or its alias
+test) defines one spec. expect takes the actual value and is chained to a
+matcher, such as toBe or toEqual, that makes the assertion.
+
+17. mount vs. shallowMount?
+mount renders the component with all of its child components. shallowMount
+stubs the children out, so it tests the component in isolation. That's useful
+when a child would fetch data or need its own plugins.
+
+18. Why would you use vi.mock() in a component test?
+To replace a module the component imports, such as an API service, with a
+fake. The test then never hits the network, and you control what data the
+component receives, so the test is fast and repeatable. vi.mock calls are
+hoisted above the imports.
+
+19. Which class is applied at the very start of an enter transition?
+b. v-enter-from. Vue 2 called it v-enter (a), which is the most common reason
+an old example stops animating.

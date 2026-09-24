@@ -1,10 +1,68 @@
-1. What's the order of events in a component's lifecycle?
+Review 3: Components, State, Routing and Testing (Labs 18-24)
 
-2. What lifecycle method is most often used for loading data?
+1. How do you pass data from a parent component to a child? What do you call
+that data, and can the child change it?
 
-3. At what lifecycle method does the component appear in the browser?
 
-4. How many root elements can a component have?
+2. How many root elements can a Vue 3 component have?
 
-5. What do slots do?
-<MyTag>dkfsdfksdfsd</MyTag> 
+
+3. What do slots do?
+
+<MyTag>This content goes somewhere</MyTag>
+
+
+4. How do you send content into a slot named "header"?
+
+
+5. What's the difference between local and global component registration?
+Which is preferred, and why?
+
+
+6. What does defineModel() do?
+
+
+7. What is a composable? Why did composables replace mixins?
+
+
+8. What naming convention do composables follow?
+
+
+9. What problem does a store like Pinia solve?
+
+
+10. What are the three parts of a Pinia store? Which part of a Vuex store
+does Pinia not have?
+
+
+11. Why can't you destructure state straight out of a Pinia store, and what
+do you use instead?
+
+
+12. Where in a Pinia store do you put code that fetches data from a server?
+
+
+13. What do the <RouterLink> and <RouterView> components do?
+
+
+14. Why are route components usually loaded with () => import(...)?
+
+
+15. What are the three steps of the TDD cycle?
+
+
+16. In Vitest, what do describe, it, and expect do?
+
+
+17. What's the difference between mount and shallowMount in Vue Test Utils?
+
+
+18. Why would you use vi.mock() in a component test?
+
+
+19. Which class does Vue apply to an element at the very start of an enter
+transition?
+a. v-enter
+b. v-enter-from
+c. v-enter-active
+d. v-enter-to

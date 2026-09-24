@@ -1,0 +1,104 @@
+Review 2: Vue Fundamentals (Labs 11-17) - ANSWER KEY
+
+1. Options API vs. Composition API? Which does this course use?
+The Options API groups code by option type (data, computed, methods, watch),
+so one feature is spread across several options, and code is reused through
+mixins. The Composition API groups code by feature and reuses it through
+composables, which are ordinary functions, and it gives better TypeScript
+support. Both are fully supported. This course uses the Composition API with
+<script setup>.
+
+2. In <script setup>, how do you make something available to the template?
+Declare it at the top level of <script setup>. Every top-level binding
+(variables, functions and imports, including imported components) is
+available to the template automatically. There is no return statement, no
+export default, and no "this".
+
+3. Difference between ref() and reactive()? When do you write .value?
+ref() wraps any value, including primitives. reactive() works only on
+objects, and loses reactivity if you destructure it or replace it wholesale.
+Use ref by default. You write .value when reading or writing a ref (or a
+computed) in script. You don't need .value in the template, where Vue
+unwraps refs for you.
+
+4. What do you call an attribute that starts with v- ?
+A directive.
+
+5. In <form v-on:submit.prevent="save">, name the parts.
+v-on is the directive, submit is the argument (after the colon), and
+.prevent is the modifier (it calls event.preventDefault() before save runs).
+
+6. Conditional rendering directive? How is v-show different?
+v-if (with v-else-if and v-else). v-if adds and removes the element from the
+DOM. v-show always renders the element and only toggles its CSS display
+property, which makes it cheaper for something that toggles often.
+
+7. What directive loops over an array or the properties of an object?
+v-for:
+<li v-for="item in items" :key="item.id">
+<li v-for="(value, key) in object" :key="key">
+
+8. Why give v-for a key, and what makes a good key?
+The key lets Vue track each item's identity, so when the list changes it can
+reuse, move and remove the right elements instead of patching the wrong ones.
+Use a stable, unique id from the data. Don't use the array index, because it
+changes when items are inserted, removed or reordered.
+
+9. Shorthands:
+v-bind:value=""  ->  :value=""
+v-on:click=""    ->  @click=""
+v-slot:header    ->  #header
+
+10. How do you output a string that contains HTML markup?
+Use the v-html directive: <div v-html="info"></div>. {{ info }} would
+display the tags as plain text. Only use v-html with trusted content, because
+it opens you to cross-site scripting (XSS).
+
+11. How do you add a CSS class only when a condition is true?
+Bind class with the object syntax: <div :class="{ active: isActive }">. You
+can also pass an array, or bind a computed property. Vue merges the result
+with any static class attribute.
+
+12. What is a computed property? How is it different from a function?
+A value derived from other reactive state, created with computed(() => ...).
+It's cached and only re-evaluates when a reactive value it reads changes; a
+function called in the template runs on every re-render. A computed getter
+should have no side effects. It's read-only unless you give it a get/set
+pair.
+
+13. Vue 2 filters were removed in Vue 3. What do you use instead?
+A computed property, or an ordinary function called in the template, for
+example {{ formatDate(article.createdAt) }}.
+
+14. watch() vs. watchEffect()? When use a watcher instead of computed?
+watch(source, callback) is explicit about what it tracks, gives you the new
+and old values, and is lazy: the callback doesn't run until the source
+changes. watchEffect(callback) tracks whatever the callback reads and runs
+once immediately. Use a watcher for side effects in response to a change,
+such as fetching data or writing to localStorage. To derive a value, use
+computed.
+
+15. How does a child component tell its parent that something happened?
+It emits an event. Declare the event with defineEmits, then call it:
+const emit = defineEmits(['enlarge-text'])
+emit('enlarge-text', 0.1)
+The parent listens with @enlarge-text="..." and receives the extra
+arguments (as $event in an inline handler).
+
+16. v-model on an <input> is shorthand for which two things?
+Binding the value and listening for input:
+<input :value="searchText" @input="searchText = $event.target.value">
+
+17. Put the lifecycle hooks in order:
+onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount,
+onUnmounted. (The update pair can run many times, or never.)
+
+18. Where does onCreated code go?
+In the body of <script setup> itself. It runs once, before the component is
+mounted, when props and state exist but there is no DOM yet.
+
+19. Which hook gives access to the DOM? Where do you clear a timer?
+onMounted gives access to the rendered DOM. Clear timers, subscriptions and
+listeners you set up yourself in onBeforeUnmount or onUnmounted; Vue stops
+watchers and hooks for you, but not those. (Hooks must be called
+synchronously in <script setup>, not inside a callback.)

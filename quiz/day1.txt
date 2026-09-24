@@ -1,44 +1,87 @@
-Monday Review
+Review 1: Vue Quickstart and Modern Tooling (Labs 01-10)
 
-1. What does "reactive" mean in the context of Javascript frameworks?
+1. What does "reactive" mean in the context of JavaScript frameworks?
+
 
 2. What are the 3 sections of a Vue single-file component?
+
 
 3. Where is Node.js used (select all that apply)?
 a. Server
 b. Client
 c. Development
 
-3. Where is vue-cli used (select all that apply)??
+4. Where is Vite used (select all that apply)?
 a. Server
 b. Client
 c. Development
 
-4. Where is eslint used (select all that apply)?
+5. Where is ESLint used (select all that apply)?
 a. Server
 b. Client
 c. Development
 
-5. What is npm?
+6. What is npm?
 a. The node package manager
 b. The node production matrix
 c. The nifty process manager
 
-6. Which of these is the correct syntax for creating a Vue instance?
+7. Which command scaffolds a new Vue project?
+a. vue create my-app
+b. npm create vue@latest
+c. npm install -g @vue/cli
+d. vue init webpack my-app
+
+8. Which of these is the correct syntax for creating and mounting a Vue 3 app?
 a.
 
-let app = Vue({
-...
+new Vue({
+  el: '#app',
+  ...
 });
 
-b. 
+b.
 
-let app = new Vue({
-...
-});
+createApp(App).mount('#app');
 
-c. 
+c.
 
-let app = Vue.instance({
-...
-});
+Vue.instance(App).render('#app');
+
+9. In package.json, which versions does the range "^3.5.2" allow?
+a. Exactly 3.5.2
+b. 3.5.2 and any later 3.5.x patch release
+c. 3.5.2 and any later 3.x release
+d. Any version at all
+
+
+10. What's the difference between dependencies and devDependencies? Which flag
+saves a package to devDependencies?
+
+
+11. When would you run npm ci instead of npm install?
+
+
+12. Since ESLint 9, what is the name of the default ESLint configuration file?
+a. .eslintrc.json
+b. .eslintrc.js
+c. eslint.config.js
+d. package.json only
+
+
+13. What's the difference between a linter (like ESLint) and a formatter
+(like Prettier)?
+
+
+14. What does Vite do with your source code during development, and what does
+it do when you run npm run build?
+
+
+15. What is a transpiler, and why is one necessary?
+
+
+16. What is the virtual DOM?
+
+
+17. What can you do with the Vue DevTools that you can't do with the
+browser's built-in developer tools?
