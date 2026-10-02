@@ -1,10 +1,10 @@
-const { createApp } = Vue;
+const { createApp, ref } = Vue;
 
 createApp({
-  data() {
-    return {
-      // Only ever render trusted HTML with v-html: it is an XSS vector.
-      rawHtml: '<span style="color:red">This should be red.</span>',
-    };
+  setup() {
+    // Only ever render trusted HTML with v-html: it is an XSS vector.
+    const rawHtml = ref('<span style="color:red">This should be red.</span>');
+
+    return { rawHtml };
   },
 }).mount('#app');
