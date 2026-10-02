@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/watzthisco/pro-vue/issues"
   },
-  "homepage": "https://github.com/watzthisco/pro-vue#readme"
+  "homepage": "https://github.com/watzthisco/pro-vue#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.11.0",
+    "globals": "^17.13.0"
+  }
 }

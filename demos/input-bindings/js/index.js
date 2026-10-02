@@ -1,15 +1,12 @@
-const { createApp } = Vue;
+const { createApp, ref, computed } = Vue;
 
 createApp({
-  data() {
-    return {
-      firstName: 'Joe',
-      lastName: 'Talcum',
-    };
-  },
-  computed: {
-    computeFullName() {
-      return `${this.firstName} ${this.lastName}`;
-    },
+  setup() {
+    const firstName = ref('Joe');
+    const lastName = ref('Talcum');
+
+    const computeFullName = computed(() => `${firstName.value} ${lastName.value}`);
+
+    return { firstName, lastName, computeFullName };
   },
 }).mount('#app');

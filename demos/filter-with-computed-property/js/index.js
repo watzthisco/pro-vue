@@ -5,45 +5,43 @@ const PEOPLE = [
   { name: 'Mark', age: 40 },
 ];
 
-const { createApp } = Vue;
+const { createApp, ref, computed } = Vue;
 
 createApp({
-  data() {
-    return {
-      searchDetails: '',
-      sortKey: 'name',
-      reverse: false,
-      people: PEOPLE,
-    };
-  },
-  computed: {
+  setup() {
+    const searchDetails = ref('');
+    const sortKey = ref('name');
+    const reverse = ref(false);
+    const people = ref(PEOPLE);
+
     // A computed property is cached: it only re-runs when one of the
     // reactive values it reads actually changes.
-    filterIt() {
-      const term = this.searchDetails.trim().toLowerCase();
+    const filterIt = computed(() => {
+      const term = searchDetails.value.trim().toLowerCase();
 
-      const matches = this.people.filter(
+      const matches = people.value.filter(
         (person) =>
           person.name.toLowerCase().includes(term) ||
           String(person.age).includes(term),
       );
 
-      const direction = this.reverse ? -1 : 1;
+      const direction = reverse.value ? -1 : 1;
 
       return [...matches].sort((a, b) => {
-        const left = a[this.sortKey];
-        const right = b[this.sortKey];
+        const left = a[sortKey.value];
+        const right = b[sortKey.value];
 
         if (left === right) return 0;
         return (left < right ? -1 : 1) * direction;
       });
-    },
-  },
-  methods: {
-    sortBy(key) {
+    });
+
+    function sortBy(key) {
       // Clicking the same column again reverses the sort.
-      this.reverse = this.sortKey === key ? !this.reverse : false;
-      this.sortKey = key;
-    },
+      reverse.value = sortKey.value === key ? !reverse.value : false;
+      sortKey.value = key;
+    }
+
+    return { searchDetails, filterIt, sortBy };
   },
 }).mount('#app');
