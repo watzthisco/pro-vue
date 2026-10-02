@@ -1,15 +1,13 @@
 {
   "name": "lab08",
-  "version": "2.0.0",
-  "private": true,
-  "description": "Making a web server with the Node.js http module.",
-  "type": "module",
-  "engines": {
-    "node": "^20.19.0 || >=22.12.0"
-  },
-  "scripts": {
-    "start": "node server.js"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
   "author": "",
-  "license": "ISC"
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
 }

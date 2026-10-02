@@ -1,17 +1,14 @@
 {
   "name": "lab07",
-  "version": "2.0.0",
-  "private": true,
-  "description": "A basic knowledge of Node.js is important for modern web development.",
-  "type": "module",
-  "engines": {
-    "node": "^20.19.0 || >=22.12.0"
-  },
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
     "build": "echo \"BUILD OK\" && exit 0",
     "prebuild": "npm run test"
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
