@@ -24,3 +24,4 @@ yarn-error.log*
 # one-shot migration workspace (the tooling lives in tools/v2-migration)
 /.migration
 __pycache__/
+/tools/
