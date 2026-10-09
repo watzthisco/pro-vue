@@ -1,0 +1,6 @@
+{
+  "name": "node-basics",
+  "private": true,
+  "type": "module",
+  "description": "EventEmitter and HTTP server examples (slides 39-40)"
+}

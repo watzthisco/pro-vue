@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Slots Demo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+    <script src="https://unpkg.com/vue@3.5.43/dist/vue.global.js"></script>
+    <style>
+      .done { text-decoration: line-through; color: #888; }
+    </style>
+  </head>
+  <body class="p-4">
+    <!--
+      This page's own template is written in the HTML (an "in-DOM" template),
+      so component tags must be kebab-case: <base-card>, <item-list>.
+      In a .vue file you'd write <BaseCard> and <ItemList>.
+    -->
+    <div id="app" class="container" style="max-width: 720px">
+      <h1 class="h3 mb-4">Slots</h1>
+
+      <!-- 1. Named slots + default slot -->
+      <base-card>
+        <template #header>Welcome to Conduit</template>
+        <p>The default slot gets everything that isn't in a named template.</p>
+        <template #footer>
+          <button class="btn btn-sm btn-success">Sign up</button>
+        </template>
+      </base-card>
+
+      <!-- 2. Only default content: header falls back, footer isn't rendered -->
+      <base-card>
+        <p>No header or footer supplied here, so the card shows its fallback header and skips the footer.</p>
+      </base-card>
+
+      <!-- 3. Scoped slot: ItemList owns the loop, the parent decides how each item looks -->
+      <h2 class="h5 mt-4">Scoped slot</h2>
+      <item-list :items="todos">
+        <template #item="{ item }">
+          <input type="checkbox" class="form-check-input me-2" v-model="item.done" />
+          <span :class="{ done: item.done }">{{ item.text }}</span>
+        </template>
+      </item-list>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      // A card with three insertion points. Header has fallback content;
+      // the footer wrapper only renders if the parent supplied a footer.
+      const BaseCard = {
+        template: `
+          <div class="card mb-3">
+            <div class="card-header fw-bold">
+              <slot name="header">(no header supplied)</slot>
+            </div>
+            <div class="card-body">
+              <slot></slot>
+            </div>
+            <div v-if="$slots.footer" class="card-footer">
+              <slot name="footer"></slot>
+            </div>
+          </div>`,
+      };
+
+      // A list that passes each item back to the parent through a scoped slot.
+      const ItemList = {
+        props: { items: { type: Array, required: true } },
+        template: `
+          <ul class="list-group">
+            <li v-for="item in items" :key="item.id" class="list-group-item">
+              <slot name="item" :item="item">{{ item.text }}</slot>
+            </li>
+          </ul>`,
+      };
+
+      createApp({
+        components: { BaseCard, ItemList },
+        setup() {
+          const todos = ref([
+            { id: 1, text: 'Learn slots', done: true },
+            { id: 2, text: 'Try a scoped slot', done: false },
+            { id: 3, text: 'Finish Lab 18', done: false },
+          ]);
+          return { todos };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

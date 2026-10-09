@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Forms: Select</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+    <script src="https://unpkg.com/vue@3.5.43/dist/vue.global.js"></script>
+  </head>
+  <body class="p-4">
+    <div id="app" class="container" style="max-width: 640px">
+      <h1 class="h3 mb-4">Select elements and v-model</h1>
+
+      <!-- 1. Single select; options generated with v-for -->
+      <label class="form-label" for="country">Country</label>
+      <select id="country" class="form-select" v-model="country">
+        <!-- matches the initial ref(''), so the prompt shows first -->
+        <option disabled value="">Choose…</option>
+        <option v-for="c in countries" :key="c.code" :value="c.code">
+          {{ c.name }}
+        </option>
+      </select>
+      <p class="mt-2">country: <code>{{ country }}</code></p>
+
+      <!-- 2. multiple: the ref holds an array (Ctrl/Cmd-click to pick several) -->
+      <label class="form-label mt-3" for="toppings">Toppings</label>
+      <select id="toppings" class="form-select" multiple size="5" v-model="toppings">
+        <option v-for="t in allToppings" :key="t">{{ t }}</option>
+      </select>
+      <p class="mt-2">toppings: <code>{{ toppings }}</code></p>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        setup() {
+          const countries = [
+            { code: 'US', name: 'United States' },
+            { code: 'CA', name: 'Canada' },
+            { code: 'MX', name: 'Mexico' },
+            { code: 'GB', name: 'United Kingdom' },
+          ];
+          const country = ref('');
+
+          const allToppings = ['Mushrooms', 'Olives', 'Peppers', 'Onions', 'Pineapple'];
+          const toppings = ref([]);
+
+          return { countries, country, allToppings, toppings };
+        },
+      }).mount('#app');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "callback-vs-promise",
+  "private": true,
+  "type": "module",
+  "description": "Callbacks, promises and async/await (slides 305-307)",
+  "scripts": {
+    "callback": "node callback.js",
+    "promise": "node promise.js",
+    "promisify": "node promisify.js",
+    "async": "node async-await.js"
+  }
+}

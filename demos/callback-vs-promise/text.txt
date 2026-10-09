@@ -1,0 +1,2 @@
+Hello from text.txt!
+If you can read this, the file was read successfully.
