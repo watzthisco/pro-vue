@@ -11,7 +11,7 @@
       }"
       @click="toggleFavorite"
     >
-      <i class="ion-heart"></i> {{ favoritesCount }}
+      <i class="icon-heart"></i> {{ favoritesCount }}
     </button>
   </div>
 </template>
