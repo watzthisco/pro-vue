@@ -21,8 +21,13 @@
             <p>Popular Tags</p>
             <div class="tag-list">
               <ul class="tag-list">
-                <li class="tag-default tag-pill tag-outline">dragons</li>
-                <li class="tag-default tag-pill tag-outline">sushi</li>
+                <li
+                  v-for="tag in popularTags"
+                  :key="tag"
+                  class="tag-default tag-pill tag-outline"
+                >
+                  {{ tag }}
+                </li>
               </ul>
             </div>
           </div>
@@ -33,6 +38,11 @@
 </template>
 <script setup>
 import GlobalFeed from './GlobalFeed.vue'
+import articlesJson from '../json/articles.json'
+
+const popularTags = [
+  ...new Set(articlesJson.articles.flatMap((article) => article.tagList)),
+]
 </script>
 <style scoped>
 .banner {

@@ -1,12 +1,69 @@
-[{
-    "title":"How to do Something",
-    "description":"An article about doing something",
-    "body": "this is the body",
-    "tagList": "something"
-},
 {
-    "title":"How to do Something else",
-    "description":"An article about doing something else",
-    "body": "this is also the body",
-    "tagList": "something else"
-}]
+  "articles": [
+    {
+      "slug": "how-to-learn-javascript-efficiently",
+      "title": "How to Learn JavaScript Efficiently",
+      "description": "A comprehensive guide to mastering JavaScript from beginner to advanced level",
+      "tagList": ["beginners", "javascript", "programming", "webdev"],
+      "createdAt": "2026-10-20T16:15:29.311Z",
+      "updatedAt": "2026-10-20T16:15:29.311Z",
+      "favorited": false,
+      "favoritesCount": 2,
+      "author": {
+        "username": "johndoe",
+        "bio": "Full-stack developer passionate about clean code and innovative solutions. Love working with modern web technologies.",
+        "image": "https://raw.githubusercontent.com/gothinkster/node-express-realworld-example-app/refs/heads/master/src/assets/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    },
+    {
+      "slug": "react-hooks-best-practices",
+      "title": "React Hooks: Best Practices and Common Pitfalls",
+      "description": "Essential patterns and anti-patterns when working with React Hooks",
+      "tagList": ["frontend", "hooks", "javascript", "react"],
+      "createdAt": "2026-10-20T16:15:29.311Z",
+      "updatedAt": "2026-10-20T16:15:29.311Z",
+      "favorited": false,
+      "favoritesCount": 2,
+      "author": {
+        "username": "janesmith",
+        "bio": "Frontend developer with a keen eye for UI/UX design. Specializing in React and modern CSS frameworks.",
+        "image": "https://raw.githubusercontent.com/gothinkster/node-express-realworld-example-app/refs/heads/master/src/assets/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    },
+    {
+      "slug": "building-scalable-apis-with-node-js",
+      "title": "Building Scalable APIs with Node.js",
+      "description": "Architectural patterns and best practices for creating robust backend services",
+      "tagList": ["api", "architecture", "backend", "nodejs"],
+      "createdAt": "2026-10-20T16:15:29.311Z",
+      "updatedAt": "2026-10-20T16:15:29.311Z",
+      "favorited": false,
+      "favoritesCount": 1,
+      "author": {
+        "username": "mikewilson",
+        "bio": "Backend engineer focused on scalable architecture and DevOps. Enthusiast of cloud technologies and automation.",
+        "image": "https://raw.githubusercontent.com/gothinkster/node-express-realworld-example-app/refs/heads/master/src/assets/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    },
+    {
+      "slug": "introduction-to-machine-learning-for-developers",
+      "title": "Introduction to Machine Learning for Developers",
+      "description": "Getting started with ML concepts and practical applications for software developers",
+      "tagList": ["ai", "datascience", "machinelearning", "python"],
+      "createdAt": "2026-10-20T16:15:29.311Z",
+      "updatedAt": "2026-10-20T16:15:29.311Z",
+      "favorited": false,
+      "favoritesCount": 1,
+      "author": {
+        "username": "sarahchen",
+        "bio": "Data scientist and machine learning engineer. Passionate about turning data into actionable insights.",
+        "image": "https://raw.githubusercontent.com/gothinkster/node-express-realworld-example-app/refs/heads/master/src/assets/images/smiley-cyrus.jpeg",
+        "following": false
+      }
+    }
+  ],
+  "articlesCount": 4
+}
